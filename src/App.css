@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta');
+body{
+  	/* font-family: 'Mukta', sans-serif;
+	height:100vh;
+	min-height:550px;
+ 	margin-top: 50vh;
+	background-image: url('https://img.freepik.com/premium-photo/construction-multistorey-houses-with-construction-cranes-black-white-background-generative-ai_225446-6729.jpg?w=996');
+	background-repeat: no-repeat;
+	background-size:contain;
+	background-position:center;
+	position:relative; */
+	margin: 0;
+	padding: 0;
+	/* overflow: hidden; */
+}

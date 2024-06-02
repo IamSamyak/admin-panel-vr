@@ -1,0 +1,9 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.AddNewProjectButtonContainer{
+  margin-left: 5vh;
+  margin-top: 5vh;
+}
