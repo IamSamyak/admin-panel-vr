@@ -1,0 +1,14 @@
+/* Custom styles for Toastify */
+.toast-container .Toastify__toast-container {
+  width: 50%; /* Adjust the width as needed */
+  top: 10px; /* Adjust the top position as needed */
+}
+
+.toast-container .Toastify__toast {
+  min-width: 400px; /* Adjust the minimum width as needed */
+  margin: 0 auto; /* Center the toast horizontally */
+}
+
+.toast-container .Toastify__toast-body {
+  text-align: center; /* Center the text */
+}

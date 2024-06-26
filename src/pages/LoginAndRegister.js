@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './LoginRegister.css'; // Import your CSS file for styling
-import { collection, addDoc } from 'firebase/firestore';
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { auth, firestore } from '../config/firebaseConfig';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './Toastify.css'; // Import your custom CSS for Toastify
 
 const LoginRegister = () => {
   const navigate = useNavigate();
@@ -42,21 +44,19 @@ const LoginRegister = () => {
       navigate('/homepage');
     } catch (error) {
       setError(error.message);
+      toast.error('Invalid credentials');
     }
   };
 
   const handleRegister = async () => {
     if (registerPassword !== registerConfirmPassword) {
-      console.error("Passwords do not match");
+      setError("Passwords do not match");
+      toast.error("Passwords do not match");
       return;
     }
   
     try {
-      const userCredential = await auth.createUserWithEmailAndPassword(
-        registerEmail,
-        registerPassword
-      );
-  
+      const userCredential = await auth.createUserWithEmailAndPassword(registerEmail, registerPassword);
       const user = userCredential.user;
       const userData = {
         uid: user.uid,
@@ -71,12 +71,26 @@ const LoginRegister = () => {
       // Redirect or perform any necessary actions
       navigate('/homepage');
     } catch (error) {
-      console.error('Error registering user:', error);
+      setError(error.message);
+      toast.error('Registration failed: ' + error.message);
     }
   };
 
   return (
     <div className="login-reg-panel" style={{marginTop:'50vh'}}>
+      <ToastContainer 
+        position="top-center" 
+        autoClose={5000} 
+        hideProgressBar 
+        newestOnTop 
+        closeOnClick 
+        rtl={false} 
+        pauseOnFocusLoss 
+        draggable 
+        pauseOnHover
+        className="toast-container"
+        toastClassName="toast-message"
+      />
       <div className="login-info-box">
         <h2>Have an account?</h2>
         <p>Lorem ipsum dolor sit amet</p>
